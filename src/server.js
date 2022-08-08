@@ -11,6 +11,10 @@ const server = new Server(app);
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
+app.get('/', (req, res) => {
+  res.redirect(`/${randomUUID()}`)
+});
+
 app.get('/:roomId', (req, res) => {
   const { roomId } = req.params;
 
