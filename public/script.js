@@ -12,9 +12,11 @@ const addVideoStream = (video, stream) => {
   videoGrid.append(video);
 }
 
-navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
+const processStream = stream => {
   addVideoStream(myVideo, stream)
-})
+}
+
+navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(processStream)
 
 // Peer is a global variable
 const myPeer = new Peer(undefined, { // undefined is a random ID
