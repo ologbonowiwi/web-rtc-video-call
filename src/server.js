@@ -25,7 +25,8 @@ const io = new SocketIoServer(server);
 
 io.on('connection', socket => {
   socket.on('join-room', (roomId, userId) => {
-    console.log('{ roomId, userId } :>> ', { roomId, userId });
+    socket.join(roomId);
+    socket.to(roomId).broadcast.emit('user-connected', userId);
   });
 });
 
