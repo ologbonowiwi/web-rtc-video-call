@@ -8,6 +8,9 @@ const app = express();
 
 const server = new Server(app);
 
+app.set('view engine', 'ejs');
+app.use(express.static('public'));
+
 const io = new SocketIoServer(server);
 
 io.on('connection', socket => {
